@@ -1,12 +1,13 @@
 <script lang="ts">
-  let showModal = false;
-  let isPromo = true;
+  export let message: string;
+  export let isPromo: boolean;
+  let showModal = true;
 </script>
 
 {#if showModal}
   <div class="backdrop" class:promo={isPromo}>
     <div class="modal">
-      <p>Sign up for offers!</p>
+      <p>{message}</p>
     </div>
   </div>
 {/if}

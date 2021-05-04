@@ -21,7 +21,7 @@
   };
 </script>
 
-<Modal />
+<Modal message="Hey, this is props here" isPromo={true} />
 
 <main>
   <h1>{name}!</h1>

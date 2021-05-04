@@ -1,32 +1,39 @@
 <script lang="ts">
+  type People = {
+    name: string;
+    beltColor: string;
+    age: number;
+    id: number;
+  };
+
+  const globalColor = "#e75480 ";
   export let name: string;
   export let user: string;
 
-  $: fullName = `${name} ${user}`;
+  let peoples: People[] = [
+    { name: "Can", beltColor: "black", age: 25, id: 1 },
+    { name: "yaman", beltColor: "orange", age: 28, id: 2 },
+    { name: "murat", beltColor: "pink", age: 24, id: 3 },
+  ];
 
-  $: console.log(name);
-
-  const globalColor = "#e75480 ";
-
-  const handleClick = () => {
-    name = "undefined";
+  const deletePerson = (id: number) => {
+    peoples = peoples.filter((person) => person.id != id);
   };
 </script>
 
 <main>
   <h1>Hello {name}!</h1>
   <p style="color: {globalColor}">Welcome {user}, svelte happy to join us.</p>
-  <button on:click={handleClick}>update</button>
 
-  <!-- svelte binds event 2 ways -->
-
-  <!-- 1st way to bind events -->
-  <!-- <input type="text" on:input={updateName} value={user} /> -->
-
-  <!-- 2nd way to bind events is much simpler. -->
-  <input type="text" bind:value={name} />
-
-  <p>{fullName}</p>
+  {#each peoples as person (person.id)}
+    <div>
+      <h4>Name: {person.name}</h4>
+      <p>Age: {person.age} - Favourite Color: {person.beltColor}</p>
+      <button on:click={() => deletePerson(person.id)}>Delete</button>
+    </div>
+  {:else}
+    <p>There are no people to show</p>
+  {/each}
 </main>
 
 <style>

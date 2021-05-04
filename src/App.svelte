@@ -4,6 +4,8 @@
 
   $: fullName = `${name} ${user}`;
 
+  $: console.log(name);
+
   const globalColor = "#e75480 ";
 
   const handleClick = () => {

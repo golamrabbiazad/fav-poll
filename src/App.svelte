@@ -1,6 +1,8 @@
 <script lang="ts">
   export let name: string;
-  export let user;
+  export let user: string;
+
+  $: fullName = `${name} ${user}`;
 
   const globalColor = "#e75480 ";
 
@@ -21,6 +23,8 @@
 
   <!-- 2nd way to bind events is much simpler. -->
   <input type="text" bind:value={name} />
+
+  <p>{fullName}</p>
 </main>
 
 <style>

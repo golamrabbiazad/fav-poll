@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Modal from "./components/Modal.svelte";
+
   type People = {
     name: string;
     beltColor: string;
@@ -6,9 +8,7 @@
     id: number;
   };
 
-  const globalColor = "#e75480 ";
   export let name: string;
-  export let user: string;
 
   let peoples: People[] = [
     { name: "Can", beltColor: "black", age: 25, id: 1 },
@@ -21,13 +21,16 @@
   };
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p style="color: {globalColor}">Welcome {user}, svelte happy to join us.</p>
+<Modal />
 
+<main>
+  <h1>{name}!</h1>
   {#each peoples as person (person.id)}
     <div>
       <h4>Name: {person.name}</h4>
+      {#if person.beltColor === "black"}
+        <p><strong>Master Ninja</strong></p>
+      {/if}
       <p>Age: {person.age} - Favourite Color: {person.beltColor}</p>
       <button on:click={() => deletePerson(person.id)}>Delete</button>
     </div>

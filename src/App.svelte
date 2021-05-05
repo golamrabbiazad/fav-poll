@@ -1,15 +1,7 @@
 <script lang="ts">
   import Modal from "./components/Modal.svelte";
   import AddPersonForm from "./components/AddPersonForm.svelte";
-
-  // types or shape of app
-  type People = {
-    name: string;
-    beltColor: string;
-    age: number;
-    skills: string[];
-    id: number;
-  };
+  import type People from "./AppShape/types";
 
   // variables or states
   export let name: string;

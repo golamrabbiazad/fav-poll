@@ -1,15 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import type People from "../AppShape/types";
 
   let dispatch = createEventDispatcher();
-
-  type People = {
-    name: string;
-    beltColor: string;
-    age: number;
-    skills: string[];
-    id: number;
-  };
 
   let name: string;
   let beltColor: string;

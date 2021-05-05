@@ -1,29 +1,47 @@
 <script lang="ts">
   import Modal from "./components/Modal.svelte";
+  import AddPersonForm from "./components/AddPersonForm.svelte";
 
+  // types or shape of app
   type People = {
     name: string;
     beltColor: string;
     age: number;
+    skills: string[];
     id: number;
   };
 
+  // variables or states
   export let name: string;
+  let showModal = false;
 
   let peoples: People[] = [
-    { name: "Can", beltColor: "black", age: 25, id: 1 },
-    { name: "yaman", beltColor: "orange", age: 28, id: 2 },
-    { name: "murat", beltColor: "pink", age: 24, id: 3 },
+    { name: "Can", beltColor: "black", age: 25, id: 1, skills: [] },
+    { name: "yaman", beltColor: "orange", age: 28, id: 2, skills: [] },
+    { name: "murat", beltColor: "pink", age: 24, id: 3, skills: [] },
   ];
 
+  // functions
   const deletePerson = (id: number) => {
     peoples = peoples.filter((person) => person.id != id);
   };
+
+  const toggleModal = () => {
+    showModal = !showModal;
+  };
+
+  const addPerson = (e: CustomEvent) => {
+    const person = e.detail;
+    peoples = [...peoples, person];
+    showModal = false;
+  };
 </script>
 
-<Modal message="Hey, this is props here" isPromo={true} />
-
+<Modal {showModal} on:click={toggleModal}>
+  <AddPersonForm on:addPerson={addPerson} />
+</Modal>
 <main>
+  <button on:click|once={toggleModal}>show modal</button>
   <h1>{name}!</h1>
   {#each peoples as person (person.id)}
     <div>

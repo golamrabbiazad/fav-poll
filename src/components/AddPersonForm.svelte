@@ -25,12 +25,14 @@
   <h3>Add a New Person</h3>
   <input type="text" placeholder="Name" bind:value={name} />
   <input type="number" placeholder="Age" bind:value={age} />
+  <!-- svelte-ignore a11y-label-has-associated-control -->
   <label>Belt Color</label>
   <select bind:value={beltColor}>
     <option value="black">Black</option>
     <option value="darkblue">Dark Blue</option>
     <option value="pink">Pink</option>
   </select>
+  <!-- svelte-ignore a11y-label-has-associated-control -->
   <label>Skills:</label>
   <input type="checkbox" bind:group={skills} value="fronend" />Frontend<br />
   <input type="checkbox" bind:group={skills} value="backend" />Backend<br />

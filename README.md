@@ -4,6 +4,8 @@ This is a project template for [Svelte](https://svelte.dev) apps.
 
 _Note that you will need to have [Node.js](https://nodejs.org) installed._
 
+![Demo](https://github.com/golamrabbiazad/fav-poll/blob/main/demo.jpeg)
+
 ## Get Started
 
 Install the dependencies...

@@ -8,8 +8,9 @@
     text-align: center;
   }
   .copyright {
-    color: #aaa;
+    color: hsl(0, 3%, 62%);
     font-size: 14px;
+    line-height: 1.5;
     display: inline-block;
     padding: 20px;
     border-top: 1px solid #ddd;

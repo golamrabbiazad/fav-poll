@@ -4,19 +4,6 @@
   import CreatePollForm from "./components/CreatePollForm.svelte";
   import PollList from "./components/PollList.svelte";
   import Tabs from "./utils/Tabs.svelte";
-  import type { Poll } from "./lib/types";
-
-  // dummy poll data
-  let polls: Poll[] = [
-    {
-      id: 1,
-      question: "TypeScript or Python?",
-      answerA: "TypeScript",
-      answerB: "Python",
-      votesA: 9,
-      votesB: 15,
-    },
-  ];
 
   // tabs
   let items: string[] = ["Current Polls", "Add New Poll"];
@@ -55,7 +42,7 @@
 <main>
   <Tabs {items} {activeItem} on:tabChange={tabChangeHandler} />
   {#if activeItem === "Current Polls"}
-    <PollList {polls} on:vote={handleVote} />
+    <PollList on:vote={handleVote} />
   {:else if activeItem === "Add New Poll"}
     <CreatePollForm on:add={handleAddPoll} />
   {/if}

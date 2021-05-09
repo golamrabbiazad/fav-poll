@@ -1,7 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import Button from "../utils/Button.svelte";
+  import Button from "../shared/Button.svelte";
   import type { Field, Poll } from "../lib/types";
+  import PollStore from "../store/PollStore";
 
   const dispatch = createEventDispatcher();
 
@@ -27,7 +28,10 @@
         votesA: 0,
         votesB: 0,
       };
-      dispatch("add", poll);
+      PollStore.update((curr_poll) => {
+        return [poll, ...curr_poll];
+      });
+      dispatch("add");
       fields.question = "";
       fields.answerA = "";
       fields.answerB = "";

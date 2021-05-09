@@ -1,18 +1,11 @@
 <script lang="ts">
-  import type { Poll } from "../lib/types";
   import PollStore from "../store/PollStore";
   import PollDetails from "./PollDetails.svelte";
-
-  export let polls: Poll[] = [];
-
-  PollStore.subscribe((data) => {
-    polls = data;
-  });
 </script>
 
 <div class="poll-list">
-  {#each polls as poll (poll.id)}
-    <PollDetails {poll} on:vote />
+  {#each $PollStore as poll (poll.id)}
+    <PollDetails {poll} />
   {/each}
 </div>
 
